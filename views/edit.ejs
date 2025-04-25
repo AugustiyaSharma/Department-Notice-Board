@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Notice</title>
+    <style>
+        body { font-family: Arial; background: #f0f0f0; padding: 30px; }
+        form { background: white; padding: 20px; border-radius: 5px; width: 400px; }
+        input, textarea, select, button {
+            display: block;
+            width: 100%;
+            margin-bottom: 15px;
+            padding: 8px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Edit Notice</h2>
+    <form action="/edit/<%= notice.id %>" method="post">
+        <input type="text" name="title" value="<%= notice.title %>" required>
+        <textarea name="content" required><%= notice.content %></textarea>
+
+        <select name="department" required>
+            <option value="CSE" <%= notice.department === 'CSE' ? 'selected' : '' %>>CSE</option>
+            <option value="ECE" <%= notice.department === 'ECE' ? 'selected' : '' %>>ECE</option>
+            <option value="ME" <%= notice.department === 'ME' ? 'selected' : '' %>>ME</option>
+        </select>
+
+        <select name="priority" required>
+            <option value="High" <%= notice.priority === 'High' ? 'selected' : '' %>>High</option>
+            <option value="Normal" <%= notice.priority === 'Normal' ? 'selected' : '' %>>Normal</option>
+        </select>
+
+        <button type="submit">Save Changes</button>
+    </form>
+</body>
+</html>
